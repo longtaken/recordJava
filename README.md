@@ -1,5 +1,4 @@
 # recordJava
-## 记录学习java之路
 ### Ⅰ 环境
 * 安装JDK
 * 配置环境变量 <br>
@@ -16,8 +15,8 @@
   3. 编写java源程序 com.projectName --> Class<br>
   4. 运行java程序 Run As <br>
 ### Ⅱ 语法
-  * 变量命名规则跟JS一样~<br>
-  * java是强类型语言，有两种数据类型<br>
+  * 变量命名规则跟JS一样~
+  * java是强类型语言，有两种数据类型
     * 基本数据类型<br>
       * 数值型<br>
         * 整数类型(byte、short、int、long)<br>
