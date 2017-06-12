@@ -36,4 +36,26 @@
           代码：<pre><code>int age=18;char sex='man';char result=age+sex;//报错，int类型不能自动转换为char类型</code></pre>
           解释：目标类型大于源类型，如 double 为 8 字节， int 为 4 字节，因此 double 类型的变量里直接可以存放 int 类型的数据，但反过来就不可以了<br>
           代码：<pre><code>double num1=33.3;int num2=num1;//报错,double类型不能自动转换为int类型</code></pre>
-          
+      强制类型转换<br>
+          解释： int 型的存储范围比 double 型的小,需要通过强制类型转换。数值上并未进行四舍五入，而是直接将小数位截断<br>
+          代码：<pre><code> double num1=176.2;	int num2=(int)num1;	System.out.println(num1);	System.out.println(num2);</code></pre>
+  java常量<br>
+     语法：final 常量名 = 值;<br>
+  java注释<br>        
+     java注释比JS多一种文档注释 以/** 开头 以 */ 结尾
+     
+     使用文档注释时还可以使用 javadoc 标记，生成更详细的文档信息：
+       @author 标明开发该类模块的作者，
+       @version 标明该类模块的版本，
+       @see 参考转向，也就是相关主题，
+       @param 对方法中某参数的说明，
+       @return 对方法返回值的说明，
+       @exception 对方法可能抛出的异常进行说明<br>
+   java运算符<br>
+       跟JS类似。<br>
+       没有全等===<br>
+       多了异或。有且只能有一个正确。true^false -> true;<br>
+       有三目运算符 ?:<br>
+       运算符优先级 http://img.mukewang.com/5360ffb90001b4f002620224.jpg<br>
+   java条件语句<br>
+       跟JS类似。<br>
