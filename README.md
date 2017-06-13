@@ -77,6 +77,49 @@
       int[] scores = { 1,2,3,4 };scores[1]//2<br>
       double height[] = {5,6,7};height[1]//6.0<br>
       int[] scores=new int[]{1,2,3,4}<br>
-      
-      
-      
+  -------------------------------------------<br>
+  java中Arrays类<br>
+  Arrays 类是 Java 中提供的一个工具类，在 java.util 包中//import java.util.Arrays;<br>
+      1、 排序<br>
+      语法：  Arrays.sort(数组名);<br>
+      2、 将数组转换为字符串<br>
+      语法：  Arrays.toString(数组名);<br>
+  -------------------------------------------<br>
+  foreach 操作数组<br>
+  语法：for(元素类型 元素变量：遍历对象){ 执行代码 }<br>
+  foreach 并不是 Java 中的关键字，是 for 语句的特殊简化版本，在遍历数组、集合时， foreach 更简单便捷<br>
+  -------------------------------------------<br>
+  java 中的二维数组<br>
+		声明数组并分配空间<br>
+		数据类型[][] 数组名 = new 数据类型[行的个数][列的个数];<br>
+		数据类型[][] 数组名; 数组名=new 数据类型[行的个数][列的个数];<br>
+		赋值<br>
+		数组名[行的索引][列的索引]=值;//num[0][0]=1;第一行第一列的元素赋值<br>
+		数据类型[][] 数组名={{值1,值2..},{值1,值2..}};<br>
+  -------------------------------------------<br>
+  定义一个方法的语法<br>
+  访问修饰符 返回值类型 方法名(参数列表){方法体}<br>
+  1、 访问修饰符：方法允许被访问的权限范围， 可以是 public、protected、private 甚至可以省略 ，其中 public 表示该方法可以被其他任何代码调用<br>
+  2、 返回值类型：方法返回值的类型，如果方法不返回任何值，则返回值类型指定为 void ；如果方法具有返回值，则需要指定返回值的类型，并且在方法体中使用 return 语句返回值<br>
+  3、 方法名：定义的方法的名字，必须使用合法的标识符<br>
+  4、 参数列表：传递给方法的参数列表，参数可以有多个，多个参数间以逗号隔开，每个参数由参数类型和参数名组成，以空格隔开 <br>
+  根据方法是否带参、是否带返回值，可将方法分为四类：无参无返回值方法、无参带返回值方法、带参无返回值方法、带参带返回值方法<br>
+  <pre><code>public class HelloWorld {
+    //定义了一个方法名为 print 的方法，实现输出信息功能
+    public void print() { System.out.println("Hello World"); }
+    //在 main 方法中调用 print 方法
+    public static void main(String[] args){ HelloWorld test=new HelloWorld(); test.print(); } 
+  }</code></pre>
+  -------------------------------------------<br>
+  Java 中无参无返回值方法的使用<br>
+  方法不包含参数，且没有返回值<br>
+  <pre><code>public void showMyLove() { System.out.println("我爱慕课网!"); }</code></pre><br>
+  -------------------------------------------<br>
+  Java 中无参带返回值方法的使用<br>
+  方法不包含参数，但有返回值<br>
+      1、 如果方法的返回类型为 void ，则方法中不能使用 return 返回值！<br>
+      2、 方法的返回值最多只能有一个，不能返回多个值<br>
+      3、 方法返回值的类型必须兼容，例如，如果返回值类型为 int ，则不能返回 String 型值<br>
+  <pre><code>public double calcAvg() {	double java = 92.5; return java; }</code></pre><br>
+  -------------------------------------------<br>   
+  
