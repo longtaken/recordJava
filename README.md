@@ -17,6 +17,7 @@
 ### Ⅱ 语法
   变量命名规则跟JS一样~<br>
       main 方法中定义的变量必须先赋值，然后才能输出 ```String str;System.out.println(str);//报错 ```<br>
+  -------------------------------------------<br>
   java是强类型语言，有两种数据类型<br>
       基本数据类型<br>
           数值型<br>
@@ -28,6 +29,7 @@
           类 (class) <br>
           接口 (interface) <br>
           数组 <br>
+  -------------------------------------------<br>
   java类型转换<br>
       自动类型转换<br>
           解释：int 型变量 num1 可以直接为 double 型变量 num2 完成赋值操作 <br>
@@ -39,8 +41,10 @@
       强制类型转换<br>
           解释： int 型的存储范围比 double 型的小,需要通过强制类型转换。数值上并未进行四舍五入，而是直接将小数位截断<br>
           代码：<pre><code> double num1=176.2;	int num2=(int)num1;	System.out.println(num1);	System.out.println(num2);</code></pre>
+  -------------------------------------------<br>
   java常量<br>
      语法：final 常量名 = 值;<br>
+  -------------------------------------------<br>
   java注释<br>        
      java注释比JS多一种文档注释 以/** 开头 以 */ 结尾
      
@@ -51,11 +55,28 @@
        @param 对方法中某参数的说明，
        @return 对方法返回值的说明，
        @exception 对方法可能抛出的异常进行说明<br>
-   java运算符<br>
+  -------------------------------------------<br>
+  java运算符<br>
        跟JS类似。<br>
        没有全等===<br>
        多了异或。有且只能有一个正确。true^false -> true;<br>
        有三目运算符 ?:<br>
        运算符优先级 http://img.mukewang.com/5360ffb90001b4f002620224.jpg<br>
-   java条件语句<br>
+  -------------------------------------------<br>
+  java条件语句<br>
        跟JS类似。<br>
+  -------------------------------------------<br>
+  java数组<br>
+      声明数组语法：数据类型[] 数组名； ||  数据类型 数组名[]；<br>
+      int[] scores;<br>
+      分配空间:（指定数组中最多可存储多少个元素）语法： 数组名 = new  数据类型 [ 数组长度 ];<br>
+      int[] scores; scores=new int[5]; || int[] scores=new int[5]<br>
+      赋值：分配空间后就可以向数组中放数据<br>
+      scores[0]=1;<br>
+      直接创建：<br>
+      int[] scores = { 1,2,3,4 };scores[1]//2<br>
+      double height[] = {5,6,7};height[1]//6.0<br>
+      int[] scores=new int[]{1,2,3,4}<br>
+      
+      
+      
