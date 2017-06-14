@@ -143,11 +143,13 @@
   </code></pre>
   -------------------------------------------<br> 
   Math.random()跟JS一样
-  <pre><code>
+  ````
   public int[] getArray(int length) {
-        int[] nums = new int[length];
-	for (int i=0;i<nums.length;i++) { nums[i]=(int)(Math.random()*100); }
+        int[] nums = new int[length]; 
+	for (int i=0;i<nums.length;i++) { 
+	    nums[i]=(int)(Math.random()*100); 
+	}  
 	return nums;
-  }
-  </code></pre>
+  }
+  ````
 
