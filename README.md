@@ -121,5 +121,33 @@
       2、 方法的返回值最多只能有一个，不能返回多个值<br>
       3、 方法返回值的类型必须兼容，例如，如果返回值类型为 int ，则不能返回 String 型值<br>
   <pre><code>public double calcAvg() {	double java = 92.5; return java; }</code></pre><br>
-  -------------------------------------------<br>   
-  
+  -------------------------------------------<br>  
+  Java 中带参无返回值方法的使用<br>
+  对象名.方法名(实参1，实参2...)<br>
+  <pre><code>public int calc(int num1,int num2){ int num3=num1+num2; System.out.println(num3) }</code></pre><br>
+  -------------------------------------------<br> 
+  Java 中带参带返回值方法的使用<br>
+  <pre><code>public int sort(int[] scores){
+	Arrays.sort(scores);
+	System.out.println(Arrays.toString(scores));
+        return scores.length;//返回数组中元素的个数
+  }</code></pre><br>
+  -------------------------------------------<br>
+  Java 中方法的重载<br>
+  如果同一个类中包含了两个或两个以上方法名相同、方法参数的个数、顺序或类型不同的方法，则称为方法的重载，也可称该方法被重载了。<br>
+  当调用被重载的方法时， Java 会根据参数的个数和类型来判断应该调用哪个重载方法，参数完全匹配的方法将被执行。<br>
+  跟JS函数会被覆盖不同，java会保留。如果有一样的函数会报错。<br>
+  <pre><code>
+  public void print() { System.out.println("无参的print方法"); } 
+  public void print(String name,int age) { System.out.println("无参的print方法"+name); System.out.println(age); }
+  </code></pre>
+  -------------------------------------------<br> 
+  Math.random()跟JS一样
+  <pre><code>
+  public int[] getArray(int length) {
+        int[] nums = new int[length];
+	for (int i=0;i<nums.length;i++) { nums[i]=(int)(Math.random()*100); }
+	return nums;
+  }
+  </code></pre>
+
