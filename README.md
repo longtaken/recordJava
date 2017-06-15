@@ -152,4 +152,36 @@
 	return nums;
   }
   ````
-
+  -------------------------------------------<br> 
+### Ⅲ Java 面向对象编程
+  所有java程序都以类class为组织单元<br>
+  类时模子，确定对象将会拥有的特征（属性）和行为（方法）<br>
+  类的组成：属性和方法<br>
+  定义一个类的步骤<br>
+	1，定义类名<br>
+	2，编写类的属性<br>
+	3，编写类的方法<br>
+  <pre><code>
+  public class 类名{
+	//定义属性部分（成员变量）
+	属性1的类型 属性1;
+	属性2的类型 属性2;
+	//定义方法部分
+	方法1;
+	方法2;	
+  }
+  package com.mypackage;
+  public class Telphone{
+	//属性
+	float screen;
+	float cpu;
+	float mem;
+	//方法
+	void call(){
+		System.out.println('call');
+	}
+	void sendMsg(){
+		System.out.println('msg');
+	}
+  }
+  </code></pre>	
