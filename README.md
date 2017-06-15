@@ -143,7 +143,7 @@
   </code></pre>
   -------------------------------------------<br> 
   Math.random()跟JS一样
-  ````
+  <pre><code>
   public int[] getArray(int length) {
         int[] nums = new int[length]; 
 	for (int i=0;i<nums.length;i++) { 
@@ -151,7 +151,7 @@
 	}  
 	return nums;
   }
-  ````
+  </code></pre>
   -------------------------------------------<br> 
 ### Ⅲ Java 面向对象编程
   所有java程序都以类class为组织单元<br>
