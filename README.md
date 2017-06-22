@@ -220,3 +220,121 @@
   //访问静态变量	
   public static void main(String[] args) { System.out.println(HelloWorld.className); }
   </code></pre>
+  -------------------------------------------<br>
+  
+用static修饰方法称为静态方法或类方法
+main方法就是静态方法
+
+//使用static关键字声明静态方法
+public static void print(){}
+
+public static void main(String[] args){
+	//直接使用类名调用静态方法
+	HelloWorld.print();
+	
+	//通过对象名调用
+	HelloWorld demo = new HelloWorld();
+	demo.print();
+}
+
+注意：
+1，静态方法中可以直接调用同类中的静态成员，但不能直接调用非静态成员。
+String str1 = "global";
+static String str2 = "static global";
+public static void print(){
+	System.out.print(str1);//报错，不能直接调用非静态变量 str1
+	System.out.print(str2);//可以直接调用静态变量 str2
+}
+
+如果希望在静态方法中调用非静态变量，可以通过创建类的对象，然后通过对象来访问非静态变量
+public static void print(){
+	HelloWorld wrap = new HelloWorld();
+	System.out.print(wrap.str1);
+}
+
+2，在普通成员方法中，则可以直接访问同类的非静态变量和静态变量
+public void show(){
+	System.out.print(str1);//可以访问
+	System.out.print(str2);//可以访问
+}
+
+3、 静态方法中不能直接调用非静态方法，需要通过对象来访问非静态方法
+//普通成员方法
+public void show(){
+	System.out.print("hello");
+}
+//静态方法
+public static void print(){
+	System.out.print("welcome");
+}
+public static void main(String[] args){
+	HelloWorld hello=new HelloWorld();
+	hello.show();//普通成员方法需要通过对象调用
+	print();//可以直接调用静态方法
+}
+
+静态方法是属于类的，内存必须为它分配内存空间，这个空间一直由静态方法占用，内存管理器不会由于静态方法没有被调用而将静态方法的存储空间收回，这样如果将所有的方法都声明为静态方法，就会占用大量的内存空间，最后是系统变慢。而普通的成员方法是由对象调用的，内存并不会一直为起分配内存，只有调用的时候才为其分配存储空间，而当其没有被调用时，存储空间就会被内存管理其收回，释放没有用的空间，提高的系统的运行速率！
+
+
+Java 中可以通过初始化块进行数据赋值
+public class Hello{
+	String name;//定义一个成员变量
+	{ //通过初始化块为成员变量赋值
+		name='h';
+	}
+	
+}
+
+在类的声明中，可以包含多个初始化块，当创建类的实例时，就会依次执行这些代码块。如果使用 static 修饰初始化块，就称为静态初始化块。
+
+静态初始化块只在类加载时执行，且只会执行一次，同时静态初始化块只能给静态变量赋值，不能初始化普通的成员变量。
+
+
+
+public class Hi{
+	int n1;
+	int n2;
+	static int n3;
+	public Hi(){//构造方法
+		n1=888;
+		System.out.print('aaa');
+	}
+	{//初始化块
+		n2=666;
+		System.out.print('bbb');
+	}
+	static {//静态初始化块
+		n3=999;
+		System.out.print('ccc');
+	}
+	public static void main(String[] args){
+		Hi hi= new Hi();
+		System.out.print(hi.n1);
+		System.out.print(hi.n2);
+		System.out.print(n3);
+		Hi hi2=new Hi();
+	}
+}
+ccc
+bbb
+aaa
+hi.n1
+hi.n2
+n3
+bbb
+aaa
+ 
+程序运行时静态初始化块最先被执行，然后执行普通初始化块，最后才执行构造方法。由于静态初始化块只在类加载时执行一次，所以当再次创建对象 hello2 时并未执行静态初始化块。
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
