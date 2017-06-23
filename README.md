@@ -222,76 +222,79 @@
   </code></pre>
   -------------------------------------------<br>
   
-用static修饰方法称为静态方法或类方法
-main方法就是静态方法
+  用static修饰方法称为静态方法或类方法<br>
+  main方法就是静态方法<br>
 
-//使用static关键字声明静态方法
-public static void print(){}
-
-public static void main(String[] args){
+  //使用static关键字声明静态方法<br>
+  <pre><code>
+  public static void print(){}
+  public static void main(String[] args){
 	//直接使用类名调用静态方法
 	HelloWorld.print();
 	
 	//通过对象名调用
 	HelloWorld demo = new HelloWorld();
 	demo.print();
-}
-
-注意：
-1，静态方法中可以直接调用同类中的静态成员，但不能直接调用非静态成员。
-String str1 = "global";
-static String str2 = "static global";
-public static void print(){
+  }
+  </code></pre>
+  注意：<br>
+  1，静态方法中可以直接调用同类中的静态成员，但不能直接调用非静态成员。<br>
+  <pre><code>
+  String str1 = "global";
+  static String str2 = "static global";
+  public static void print(){
 	System.out.print(str1);//报错，不能直接调用非静态变量 str1
 	System.out.print(str2);//可以直接调用静态变量 str2
-}
-
-如果希望在静态方法中调用非静态变量，可以通过创建类的对象，然后通过对象来访问非静态变量
-public static void print(){
+  }
+  </code></pre>
+  如果希望在静态方法中调用非静态变量，可以通过创建类的对象，然后通过对象来访问非静态变量
+  <pre><code>
+  public static void print(){
 	HelloWorld wrap = new HelloWorld();
 	System.out.print(wrap.str1);
-}
-
-2，在普通成员方法中，则可以直接访问同类的非静态变量和静态变量
-public void show(){
+  }
+  </code></pre>
+  2，在普通成员方法中，则可以直接访问同类的非静态变量和静态变量
+  <pre><code>
+  public void show(){
 	System.out.print(str1);//可以访问
 	System.out.print(str2);//可以访问
-}
-
-3、 静态方法中不能直接调用非静态方法，需要通过对象来访问非静态方法
-//普通成员方法
-public void show(){
+  }
+  </code></pre>
+  3、 静态方法中不能直接调用非静态方法，需要通过对象来访问非静态方法
+  //普通成员方法
+  <pre><code>
+  public void show(){
 	System.out.print("hello");
-}
-//静态方法
-public static void print(){
+  }
+  //静态方法
+  public static void print(){
 	System.out.print("welcome");
-}
-public static void main(String[] args){
+  }
+  public static void main(String[] args){
 	HelloWorld hello=new HelloWorld();
 	hello.show();//普通成员方法需要通过对象调用
 	print();//可以直接调用静态方法
-}
+  }
+  </code></pre>
+  静态方法是属于类的，内存必须为它分配内存空间，这个空间一直由静态方法占用，内存管理器不会由于静态方法没有被调用而将静态方法的存储空间收回，这样如果将所有的方法都声明为静态方法，就会占用大量的内存空间，最后是系统变慢。而普通的成员方法是由对象调用的，内存并不会一直为起分配内存，只有调用的时候才为其分配存储空间，而当其没有被调用时，存储空间就会被内存管理其收回，释放没有用的空间，提高的系统的运行速率！
 
-静态方法是属于类的，内存必须为它分配内存空间，这个空间一直由静态方法占用，内存管理器不会由于静态方法没有被调用而将静态方法的存储空间收回，这样如果将所有的方法都声明为静态方法，就会占用大量的内存空间，最后是系统变慢。而普通的成员方法是由对象调用的，内存并不会一直为起分配内存，只有调用的时候才为其分配存储空间，而当其没有被调用时，存储空间就会被内存管理其收回，释放没有用的空间，提高的系统的运行速率！
 
-
-Java 中可以通过初始化块进行数据赋值
-public class Hello{
+  Java 中可以通过初始化块进行数据赋值
+  <pre><code>
+  public class Hello{
 	String name;//定义一个成员变量
 	{ //通过初始化块为成员变量赋值
 		name='h';
-	}
-	
-}
+	}	
+  }
+  </code></pre>
+  在类的声明中，可以包含多个初始化块，当创建类的实例时，就会依次执行这些代码块。如果使用 static 修饰初始化块，就称为静态初始化块。
 
-在类的声明中，可以包含多个初始化块，当创建类的实例时，就会依次执行这些代码块。如果使用 static 修饰初始化块，就称为静态初始化块。
+  静态初始化块只在类加载时执行，且只会执行一次，同时静态初始化块只能给静态变量赋值，不能初始化普通的成员变量。
 
-静态初始化块只在类加载时执行，且只会执行一次，同时静态初始化块只能给静态变量赋值，不能初始化普通的成员变量。
-
-
-
-public class Hi{
+  <pre><code>
+  public class Hi{
 	int n1;
 	int n2;
 	static int n3;
@@ -314,19 +317,110 @@ public class Hi{
 		System.out.print(n3);
 		Hi hi2=new Hi();
 	}
+  }
+  /*ccc
+  bbb
+  aaa
+  hi.n1
+  hi.n2
+  n3
+  bbb
+  aaa*/ 
+  </code></pre>
+  程序运行时静态初始化块最先被执行，然后执行普通初始化块，最后才执行构造方法。由于静态初始化块只在类加载时执行一次，所以当再次创建对象 hello2 时并未执行静态初始化块。
+
+面向对象三大特性
+封装、继承、多态
+
+封装
+1、概念
+将类的某些信息隐藏在类的内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对隐藏信息的操作和访问
+
+2、好处
+a.只能通过规定的方法访问数据
+b.隐藏类的实例细节，方便修改和实现
+
+3、封装的实现步骤
+修改属性的可见性 （设为private）
+创建getter/setter方法 （用于属性的读写）
+在getter/setter方法中加入属性控制语句 （对属性值的合法性进行判断）
+
+属性设置为private，用一个方法去调用修改，方法不是private，用public
+
+
+java中的包
+1、包的作用
+管理java文件
+解决同名文件冲突
+
+2、定义包：package包名
+必须放在java源程序的第一行包名间可以使用"."号隔开 （eg:com.im.myclass）
+
+3、系统中的包
+java.(功能).(类)
+java.lang.(类)包含java语言基础的类
+java.util.(类)包含java语言中各种工具类
+java.io.(类)包含输入、输出相关功能的类
+
+4、包的使用
+a.可以通过import关键字，在某个文件使用其他文件的类 (import com.im.myclass)
+b.java中，包的命名规范是全小写字母拼写
+c.使用的时候不但可以加载某个包下的所有文件
+eg:com.im.*
+也可以加载某个具体子包下的所有文件
+eg:com.im.m.*
+
+
+访问修饰符--可以修饰属性和方法的访问范围
+访问修饰符  本类   同包   子类   其他
+private	     √
+默认         √     √
+protected    √     √     √
+public       √     √     √     √
+
+
+java中的this关键字
+1，this关键字代表当前对象
+this.属性 操作当前对象的属性
+this.方法 调用当前对象的方法
+2，封装对象的属性的时候，经常使用this
+
+this关键字其实相当于帮你创建当下类的一个具体对象，如果不用this的话就得自己实例化一下
+
+
+java中的内部类
+内部类（ Inner Class ）就是定义在另外一个类里面的类。与之对应，包含内部类的类被称为外部类。
+
+内部类的主要作用如下：
+1. 内部类提供了更好的封装，可以把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类
+2. 内部类的方法可以直接访问外部类的所有数据，包括私有的数据
+3. 内部类所实现的功能使用外部类同样可以实现，只是有时使用内部类更方便
+
+内部类可分为以下几种：
+成员内部类
+静态内部类
+方法内部类
+匿名内部类
+<pre><code>
+//外部类Hello
+public class Hello {
+	// 内部类Inner，类Inner在类Hello的内部
+	public class Inner {
+		// 内部类的方法
+		public void show() {	
+			System.out.println("welcome");
+		}
+	}
+	public static void main(String[] args) {
+		// 创建外部类对象
+		Hello ni = new Hello();
+		// 创建内部类对象
+		Inner i = ni.new Inner();
+		// 调用内部类对象的方法
+		i.show();
+	}
 }
-ccc
-bbb
-aaa
-hi.n1
-hi.n2
-n3
-bbb
-aaa
- 
-程序运行时静态初始化块最先被执行，然后执行普通初始化块，最后才执行构造方法。由于静态初始化块只在类加载时执行一次，所以当再次创建对象 hello2 时并未执行静态初始化块。
-
-
+</code></pre>
   
   
   
