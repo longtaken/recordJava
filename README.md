@@ -510,6 +510,50 @@ Interface I = new Interface(){
 };
 -------------------------------------------<br>
 
+1.Java中的所有不正常类都继承于Throwable类。Throwable主要包括两个大类，一个是Error类，另一个是Exception类；
+
+2.其中Error类中包括虚拟机错误和线程死锁，一旦Error出现了，程序就彻底的挂了，被称为程序终结者；
+
+3.Exception类主要指编码、环境、用户操作输入出现问题，Exception主要包括两大类，非检查异常（RuntimeException）和检查异常（其他的一些异常）
+
+4.RuntimeException异常主要包括以下四种异常：
+空指针异常
+String str=null;System.out.println(str.length());
+
+数组下标越界异常
+int[] ary={1,2,3};
+for(int i=0;i<=3;i++){ System.out.println(ary[i]); }
+
+类型转换异常
+A a1=(B)b1;
+
+算术异常
+System.out.println(12/0)
+
+
+try{
+}catch(InputMismatchException e){
+}catch(ArithmeticException e){
+}catch(Excetion e){
+}
+多重catch，先捕获子类，最后到父类的错误
+
+finally中有return用finally.return代替，顺序为“try语句  ->  catch  ->  finally  ->  finally.return  ->  catch.return  ->  try.return”，没有相应的阶段请忽略该阶段，任何阶段的return被执行，则整个语句块结束。
+
+throw 将产生的异常抛出
+throws 声明将要抛出何种类型的异常
+
+public void divide(int one, int two) throws Exception{
+	if(two==0){
+		throw new Exception("xx");
+	}else{
+		System.out.print(one/two);
+	}
+}
+
+
+class 自定义异常类 extends 异常类型{ }
+
   
   
   
