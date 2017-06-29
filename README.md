@@ -554,6 +554,72 @@ public void divide(int one, int two) throws Exception{
 
 class 自定义异常类 extends 异常类型{ }
 
+-------------------------------------------<br>
+异常链
+public void t1() throws DrunkException{
+	throw new DrunkException("错误1");
+}
+public void t2(){
+	try{
+		t1();
+	}catch(DrunkException e){
+		RuntimeException newExc=new RuntimeException("错误了");
+		newExc.initCause(e);
+		throw newExc;
+	}
+}
+public static void main(String[] args){
+	ChainT ct=new ChainT();
+	try{
+		ct.t2();
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+}
+
+
+1.自定义异常: 
+class 异常类名 extends Exception { 
+    public 异常类名(String msg) { 
+        super(msg); 
+    } 
+} 
+ 
+2.标识可能抛出的异常: 
+throws 异常类名1,异常类名2 
+
+3.捕获异常: 
+try{} 
+catch(异常类名 y){} 
+catch(异常类名 y){} 
+
+4.方法解释 
+getMessage() //输出异常的信息 
+printStackTrace() //输出导致异常更为详细的信息
+
+-------------------------------------------<br>
+在 Java 中，字符串被作为 String 类型的对象处理。 
+String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序
+创建 String 对象的方法:
+String s1="str";
+String s2=new String();//空字符串
+String s3=new String("str");
+
+String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。
+String i="str";
+String j="str";
+String k=new String("str");
+String l=new String("str");
+s1==s2;//true
+s1==s3;//false
+s3==s4;//false
+s1="new"+s1;//字符串s1被修改，指向新的内存空间
+
+通过 String s1="爱慕课"; 声明了一个字符串对象， s1 存放了到字符串对象的引用
+然后通过 s1="欢迎来到："+s1; 改变了字符串 s1 ，其实质是创建了新的字符串对象，变量 s1 指向了新创建的字符串对象
+一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder
+ 每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法
+
   
   
   
