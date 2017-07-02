@@ -622,6 +622,221 @@ s1="new"+s1;//字符串s1被修改，指向新的内存空间
 
   
 String 类提供了许多用来处理字符串的方法，例如，获取字符串长度、对字符串进行截取、将字符串转换为大写或小写、字符串分割等（大部分与js类似）
+int length() 返回当前字符串的长度
+byte[] getBytes() 将该字符串转换为byte数组
+o.equals("str");  比较存储在两个字符串对象中的内容是否一致
+
+在Java中，除了可以使用 String 类来存储字符串，还可以使用 StringBuilder 类或 StringBuffer 类存储字符串
+StringBuilder 和StringBuffer ，它们基本相似，不同之处，StringBuffer 是线程安全的，而 StringBuilder 则没有实现线
+
+程安全功能，所以性能略高。因此一般情况下，如果需要创建一个内容可变的字符串对象，应优先考虑使用 StringBuilder 类
+
+StringBuilder append(args) 追加内容到当前StringBuilder对象的末尾
+StringBuilder insert(位置，参数) 将内容插入StringBuilder对象的指定位置
+String toString() 将StringBuilder对象转换为String对象
+int length() 获取字符串长度
+
+// 创建一个空的StringBuilder对象
+		
+StringBuilder str=new StringBuilder();
+  
+      
+		
+// 追加字符串
+		
+str.append("jaewkjldfxmopzdm");
+	
+	
+        
+// 从后往前每隔三位插入逗号
+        
+for(int i = str.length()-3;i>0;i=i-3){
+            str.insert(i,',');
+        }
+  
+      
+       
+// 将StringBuilder对象转换为String对象并输出
+		
+System.out.print(str.toString());
+
+
+
+基本类型		对应的包装类
+byte			Byte
+short			Short
+int 			Interger
+long			Long
+float			Float
+double			Double
+char			Character
+boolean			Boolean
+包装类主要提供了两大类方法：
+1. 将本类型和其他基本类型进行转换的方法
+2. 将字符串和本类型及包装类互相转换的方法
+
+Integer(int value) 创建一个Integer对象，表示指定的int值
+Integer(String s) 创建一个Integer对象，表示String参数所指示的int值
+
+// 定义int类型变量，值为86
+
+int score1 = 86; 
+        
+		
+// 创建Integer包装类对象，表示变量score1的值
+		
+Integer score2=new Integer(score1);
+        
+		
+// 将Integer包装类转换为double类型
+		
+double score3=score2.doubleValue();
+        
+		
+// 将Integer包装类转换为float类型
+		
+float score4=score2.floatValue();
+        
+		
+// 将Integer包装类转换为int类型
+		
+int score5 =score2.intValue();
+
+		
+
+Integer包装类：86
+double类型：86.0
+float类型：86.0
+int类型：86
+
+Java 中基本类型和包装类之间的转换
+基本类型和包装类之间经常需要互相转换
+Integer a=new Integer(3);//定义Integer包装类对象，值为3
+int b=a+5;
+
+装箱：把基本类型转换成包装类，使其具有对象的性质，又可分为手动装箱和自动装箱
+int i=10;//定义一个int基本类型值
+Integer x=new Integer(i);//手动装箱
+Integer y=i;//自动装箱
+
+拆箱：和装箱相反，把包装类对象转换成基本类型的值，又可分为手动拆箱和自动拆箱
+Integer j=new Integer(8);//定义一个Integer包装对象，值为8
+int m=j.intValue();//手动插箱int类型
+int n=j;//自动拆箱为int类型
+
+// 定义double类型变量
+		
+double a = 91.5;
+        
+         
+// 手动装箱
+		
+Double b = new Double(a);
+        
+        
+// 自动装箱
+		
+Double c = a;
+
+        
+System.out.println("装箱后的结果为：" + b + "和" + c);
+        
+        
+
+// 定义一个Double包装类对象，值为8
+		
+Double d = new Double(87.0);
+        
+        
+// 手动拆箱
+		
+double e =  d.doubleValue() ;
+        
+        
+// 自动拆箱
+		
+double f =  d;
+        
+         
+System.out.println("拆箱后的结果为：" + e + "和" + f);
+
+
+Java 中基本类型和字符串之间的转换
+基本类型转换为字符串有三种方法：
+1. 使用包装类的 toString() 方法
+2. 使用String类的 valueOf() 方法
+3. 用一个空字符串加上基本类型，得到的就是基本类型数据对应的字符串
+
+//将基本类型装换为字符串
+int c=10;
+String str1=Integer.toString(c);
+String str2=String.valueOf(c);
+String str3=c+"";
+
+
+将字符串转换成基本类型有两种方法：
+1. 调用包装类的 parseXxx 静态方法
+2. 调用包装类的 valueOf() 方法转换为基本类型的包装类，会自动拆箱
+//将字符串转为基本类型
+String str="8";
+int d=Integer.parseInt(str);
+int e=Integer.valueOf(str);
+
+
+使用 Date 和 SimpleDateFormat 类表示时间
+经常需要处理日期和时间的相关数据，此时我们可以使用 java.util 包中的 Date 类。这个类最主要的作用就是获取当前时间
+Date d=new Date();//使用默认的构造方法创建Date对象
+
+使用 Date 类的默认无参构造方法创建出的对象就代表当前时间，我们可以直接输出 Date 对象显示当前的时间
+
+java.text 包中的 SimpleDateFormat
+对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。
+1. 使用 format() 方法将日期转换为指定格式的文本
+Date d=new Date();
+SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+String today=sdf.format(d);
+System.out.println(today);//2014-06-11  09:55:48
+
+2. 使用 parse() 方法将文本转换为日期
+String day="2017年02月14日 10:02:23;
+SimpleDateFormat df=new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+Date date=df.parse(day);
+System.out.println(date);//Fri Feb 14 10:02:23 CST 2017
+
+1、 调用 SimpleDateFormat 对象的 parse() 方法时可能会出现转换异常，即 ParseException ，因此需要进行异常处理
+2、 使用 Date 类时需要导入 java.util 包，使用 SimpleDateFormat 时需要导入 java.text 包
+
+
+Calendar 类的应用
+Date 类最主要的作用就是获得当前时间，同时这个类里面也具有设置时间以及一些其他的功能，但是由于本身设计的问题，这
+
+些方法却遭到众多批评，不建议使用，更推荐使用 Calendar 类进行时间和日期的处理。
+
+java.util.Calendar 类是一个抽象类，可以通过调用 getInstance() 静态方法获取一个 Calendar 对象，此对象已由当前日期
+
+时间初始化，即默认代表当前时间，如 Calendar c = Calendar.getInstance();
+
+Calendar c=Calendar.getInstance();
+int year=c.get(Calendar.YEAR);
+int month=c.get(Calendar.MONTH)+1;
+int day=c.get(Calendar.DAY_OF_MONTH);
+int hour=c.get(Calendar.HOUR_OF_DAY);
+int minute=c.get(Calendar.MINUTE);
+int second=c.get(Calendar.SECOND);
+
+Date date=c.getTime();//将Calendar对象转换为Date对象
+Long time=c.getTimeInMillis();//获取当前毫秒数
+
+
+使用 Math 类操作数据
+Math 类位于 java.lang 包中，包含用于执行基本数学运算的方法， Math 类的所有方法都是静态方法，所以使用该类中的方法
+
+时，可以直接使用类名.方法名，如： Math.round();
+返回值	  方法名	解释
+long	  round()	返回四舍五入后的整数
+double    floor()	返回小于参数的最大整数
+double    ceil()	返回大于参数的最小整数
+double    random()	返回[0,1)之间的随机数浮点数
 
   
   
